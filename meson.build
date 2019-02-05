@@ -194,6 +194,10 @@ config.set('datadir', join_paths(prefix, datadir))
 config.set('prefix', prefix)
 config.set('sysconfdir', join_paths(prefix, sysconfdir))
 
+if systemd.found()
+  subdir('systemd')
+endif
+
 configure_file(
 	configuration: config,
 	input: 'config.in',

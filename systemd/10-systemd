@@ -1,0 +1,6 @@
+# should go to /etc/sway/config.d/10-systemd
+#
+
+# import sway environment variables into systemd
+exec systemctl --user import-environment
+exec systemctl --user start sway-session.target
