@@ -9,16 +9,13 @@ if systemd_dep.found()
     output: '@BASENAME@',
     install_dir: user_units_dir
   )
+  install_data('sway-session.target',
+      install_dir: user_units_dir)
+  install_data('10-systemd',
+      install_dir: join_paths(sysconfdir, 'sway/config.d'))
+  install_data('sway-service.desktop',
+      install_dir: join_paths(datadir, 'wayland-sessions'))
+  install_data('sway-service.sh',
+      install_dir: join_paths(prefix, 'bin'))
 
-  systemd_units = files(
-    'sway-session.target',
-  )
-  install_data(systemd_units, install_dir: user_units_dir)
-
-
-  sway_systemd_scripts = files(
-    '10-systemd',
-  )
-
-  install_data(sway_systemd_scripts, install_dir: sysconfdir + '/sway/config.d')
 endif
